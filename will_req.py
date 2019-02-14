@@ -20,4 +20,4 @@ for en in e:
 with open('index.html', 'w') as f:
     for i in range(len(titles)):
         f.write('<h2>%s</h2>' % titles[i])
-        f.write('<p>%s</p>' % contents[i])
+        f.write('<p style="font-size:20px;padding:1%;">' + contents[i] + '</p>')
