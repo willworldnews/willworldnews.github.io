@@ -17,7 +17,8 @@ for en in e:
     contents.append(content.text())
 
 
+length = len(titles)
 with open('index.html', 'w') as f:
-    for i in range(len(titles)):
+    for i in range(length):
         f.write('<h2>%s</h2>' % titles[i])
-        f.write('<p style="font-size:20px;padding:1%;">' + contents[i] + '</p>')
+        f.write('<p style="background-color:hsl(' + str(float(i / length * 360)) + ', 90%, 90%);font-size:20px;padding:1%;">' + contents[i] + '</p><hr/>')
