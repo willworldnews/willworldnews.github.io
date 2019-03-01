@@ -17,7 +17,12 @@ for en in e:
 	title = p('h2')
 	titles.append(title.text())
 	content = p('#left-div>.single-post-wrap>p')
-	contents.append(content.text())
+	text = content.text()
+	for _ in range(20):
+		text = text.replace('  ', ' ')
+	print(text)
+	print()
+	contents.append(text)
 
 length = len(titles)
 with open('index.html', 'w') as f:
