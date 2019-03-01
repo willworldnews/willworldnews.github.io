@@ -6,9 +6,12 @@ r = parse('http://wwwords.mscuttle.com/feed/')
 e = r.entries
 titles = []
 contents = []
+times = []
 
 for en in e:
-	link = en.links[0].href
+	time = en.published.split('+')[0].strip()
+	times.append(time)
+	link = en.link
 	g = get(link)
 	p = pyq(g.text)
 	title = p('h2')
@@ -19,4 +22,4 @@ for en in e:
 length = len(titles)
 with open('index.html', 'w') as f:
 	for i in range(length):
-		f.write('<div style="border-radius:1vw;background-color:hsl(' + str(float(i / length * 360)) + ', 90%, 90%);font-size:20px;padding:2vh;margin:2vh;"><h2>' + titles[i] + '</h2>' + contents[i] + '</div>')
+		f.write('<div style="border-radius:1vw;background-color:hsl(' + str(float(i / length * 360)) + ', 90%, 90%);font-size:20px;padding:2vh;margin:2vh;"><span style="font-size:16px;border-bottom:1px solid black;">' + times[i] + '</span><h2>' + titles[i] + '</h2>' + contents[i] + '</div>')
